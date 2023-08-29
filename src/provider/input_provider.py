@@ -51,8 +51,8 @@ class LocalInputProvider(InputProvider):
     def __init__(self, config: dict):
         self._folder = h.require(config, "input/folder")
 
-    def get_decklist(self, name: str) -> list[dict[str, str]]:
-        with open(os.path.join(self._folder, name), "r", newline="\r\n") as f:
+    def get_decklist(self, path: str) -> list[dict[str, str]]:
+        with open(path, "r") as f:
             return list(DictReader(f.readlines(), delimiter=","))
 
     def get_image(self, name: str) -> PIL.Image.Image:

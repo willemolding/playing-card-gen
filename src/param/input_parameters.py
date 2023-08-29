@@ -14,20 +14,18 @@ class InputParameters:
 
 class InputParameterBuilder(ABC):
     @staticmethod
-    def build(gen_config_path: str, deck_config_path: str, decklist_file: str):
+    def build(gen_config_path: str, deck_config_path: str, decklist_path: str):
         with open(gen_config_path, "r") as f:
             gen_config = json.load(f)
         with open(deck_config_path, "r") as f:
             deck_config = json.load(f)
 
-        decklist = os.path.basename(decklist_file)
-
         config = gen_config | deck_config
 
-        deck_name = decklist.split(".")[0]
+        deck_name = os.path.basename(decklist_path).split(".")[0]
 
         return InputParameters(
-            decklist,
+            decklist_path,
             config,
             deck_name,
         )

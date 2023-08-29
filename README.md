@@ -11,6 +11,9 @@ With `json` configuration files and a `csv` decklist file, these scripts will re
 
 There are two example generation configurations, which describe how assets are retrieved and how and where results are saved. `example/example_config_local.json` uses local assets while `example/example_config_google.json` leverages Google drive. `example/deck_config.json` describes the card layout and other card-specific features.
 
+## Prerequisites
+
+- Requires python 3.11
 ## To initialize the python virtual environment
 ```
 python -m venv env
@@ -33,8 +36,8 @@ pip install -r requirements.txt
 ## To run the generator using local assets
 ```
 cd src
-python .\run_gen.py -h
-python .\run_gen.py --gen_config "..\example\gen_config_local.json" --deck_config "..\example\deck_config.json" --decklist "example.csv"
+python ./run_gen.py -h
+python ./run_gen.py --gen_config "../example/gen_config_local.json" --deck_config "../example/deck_config.json" --decklist "../example/decklist.csv"
 ```
 
 See `example/deck_config.json` for an example of how card formats are described in configuration. Most importantly, each type of card is a list of layers, which can be:
